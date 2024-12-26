@@ -4,7 +4,7 @@
             <h1 class="text-2xl font-bold tracking-tight lg:text-3xl">Log in</h1>
             <p class="mt-1 text-muted-foreground">Enter your email & password to log in.</p>
 
-            <form class="mt-10" @submit="submit">
+            <form class="mt-10" @submit="handleLogin">
                 <fieldset :disabled="isSubmitting" class="grid gap-5">
                     <div>
                         <UiVeeInput label="Email" type="email" name="email" placeholder="john@example.com" />
@@ -30,27 +30,29 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="js" setup>
 import { object, string } from "yup";
-import type { InferType } from "yup";
 
-useSeoMeta({
-    title: "Log in",
-    description: "Enter your email & password to log in.",
-});
+import { useAuthStore } from "@/stores/authStore";
+
+const authStore = useAuthStore();
 
 const LoginSchema = object({
     email: string().email().required().label("Email"),
     password: string().required().label("Password").min(8),
 });
 
-const { handleSubmit, isSubmitting } = useForm<InferType<typeof LoginSchema>>({
+const { handleSubmit, isSubmitting } = useForm({
     validationSchema: LoginSchema,
 });
 
-const submit = handleSubmit(async (_) => {
-    useSonner("Logged in successfully!", {
-        description: "You have successfully logged in.",
-    });
+const handleLogin = handleSubmit(async (loginData) => {
+    console.log(loginData)
+    const result = await authStore.loginUser(loginData)
+    if (result) {
+        navigateTo("/");
+    }
 });
+
+ 
 </script>

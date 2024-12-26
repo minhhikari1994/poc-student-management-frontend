@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-
   modules: [
     '@nuxtjs/tailwindcss',
     "@nuxtjs/color-mode",
@@ -11,14 +10,22 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     "@samk-dev/nuxt-vcalendar",
     "@vee-validate/nuxt",
-    "@morev/vue-transitions/nuxt"
+    "@morev/vue-transitions/nuxt",
+    "@pinia/nuxt",
+    "notivue/nuxt",
   ],
-
+  css: [
+    'notivue/notification.css', // Only needed if using built-in <Notification />
+    'notivue/animations.css' // Only needed if using default animations
+  ],
+  notivue: {
+    position: "top-right",
+    limit: 3,
+  },
   tailwindcss: {
     exposeConfig: true,
     editorSupport: true
   },
-
   colorMode: {
     classSuffix: "",
     preference:"light"
@@ -50,8 +57,8 @@ export default defineNuxtConfig({
       }]
     }
   },
-
   build: {
     transpile: ["vue-sonner"]
-  }
+  },
+  ssr: false
 })
