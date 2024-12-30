@@ -2,10 +2,22 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 import { push } from "notivue";
 
-import { login, logout } from '@/services/authService';
+import { login, logout, checkAuth } from '@/services/authService';
 
 export const useAuthStore = defineStore("auth", () => {
     const isAuthenticated = ref(false);
+
+    const checkUserAuth = async () => {
+        try {
+            await checkAuth()
+            isAuthenticated.value = true;
+            return true
+        } catch (error) {
+            // push.error(error.data.message);
+            isAuthenticated.value = false;
+            return false
+        }
+    }
 
     const loginUser = async ({ email, password }) => {
         try {
@@ -35,5 +47,6 @@ export const useAuthStore = defineStore("auth", () => {
         isAuthenticated,
         loginUser,
         logoutUser,
+        checkUserAuth
     };
 });
