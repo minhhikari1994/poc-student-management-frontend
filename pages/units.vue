@@ -1,8 +1,36 @@
 <template>
-  
+  <div class="flex items-center justify-center">
+    <UiList class="">
+      <template v-for="unit in unitList" :key="unit.unit_id">
+        <UiListItem class="py-5 items-start px-0" :to="`/list-item/${n}`">
+          <UiListContent>
+            <UiListTitle :title="unit.name" />
+            <UiListSubtitle
+              class="line-clamp-2"
+              :subtitle="unit.grade_name"
+            />
+          </UiListContent>
+          <UiButton
+            size="icon-sm"
+            variant="ghost"
+            class="ml-auto shrink-0 self-center rounded-full"
+          >
+            <Icon name="lucide:chevron-right" />
+          </UiButton>
+        </UiListItem>
+        <UiSeparator class="ml-auto last:hidden" />
+      </template>
+    </UiList>
+  </div>
 </template>
 
 <script lang="js" setup>
+
+import { useUnitStore } from "@/stores/unitStore";
+
+const unitStore = useUnitStore();
+
+const { unitList } = storeToRefs(unitStore);
 
 // import { useAuthStore } from "@/stores/authStore";
 

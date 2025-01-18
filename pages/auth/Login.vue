@@ -35,6 +35,10 @@ import { object, string } from "yup";
 
 import { useAuthStore } from "@/stores/authStore";
 
+definePageMeta({
+    layout: "auth",
+});
+
 const authStore = useAuthStore();
 
 const LoginSchema = object({
