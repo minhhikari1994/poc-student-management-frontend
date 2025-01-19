@@ -6,3 +6,10 @@ export const getAllUnits = () => {
        credentials: 'include'
     });
 }
+
+export const getUnitStudentList = (unit_code) => {
+    return $fetch(`${baseApiUrl}/api/units/${unit_code}/students`, {
+       method: 'GET',
+       credentials: 'include'
+    });
+}
