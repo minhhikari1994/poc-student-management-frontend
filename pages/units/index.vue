@@ -34,12 +34,11 @@ const appPageStore = useAppPageStore();
 
 const { unitList } = storeToRefs(unitStore);
 
-
 const breadCrumbItems = [
   {
     label: "Danh sách lớp",
     link: "/units",
-  },
+  }
 ]
 
 onBeforeMount(() => {

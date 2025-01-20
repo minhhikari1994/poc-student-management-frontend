@@ -280,6 +280,12 @@ const data = {
       url: "/units",
       icon: "lucide:book-open",
       isActive: true
+    },
+    {
+      title: "Điểm danh",
+      url: "/attendances",
+      icon: "lucide:check",
+      isActive: false
     }
     // {
     //   title: "Playground",
