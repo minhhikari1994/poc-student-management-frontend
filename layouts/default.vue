@@ -4,7 +4,7 @@
     <UiSidebar variant="inset">
       <!-- Team switcher -->
       <UiSidebarHeader>
-        <UiSidebarMenu>
+        <!-- <UiSidebarMenu>
           <UiSidebarMenuItem>
             <UiDropdownMenu>
               <UiDropdownMenuTrigger as-child>
@@ -48,10 +48,10 @@
               </UiDropdownMenuContent>
             </UiDropdownMenu>
           </UiSidebarMenuItem>
-        </UiSidebarMenu>
+        </UiSidebarMenu> -->
 
         <!-- Search form -->
-        <form v-if="state != 'collapsed'">
+        <!-- <form v-if="state != 'collapsed'">
           <UiSidebarGroup class="py-0">
             <UiSidebarGroupContent class="relative">
               <UiLabel for="search" class="sr-only"> Search </UiLabel>
@@ -60,7 +60,7 @@
                 class="pointer-events-none absolute left-2 top-1/2 size-4 -translate-y-1/2 select-none opacity-50" />
             </UiSidebarGroupContent>
           </UiSidebarGroup>
-        </form>
+        </form> -->
       </UiSidebarHeader>
       <UiSidebarContent>
         <!-- Main -->
