@@ -79,7 +79,7 @@
         </UiCarousel>
     </div>
 
-    <div class="flex items-center justify-center mt-[4rem]">
+    <div class="flex items-center justify-center mt-[4rem]" v-if="attendanceDate && selectedAttendanceType">
         <UiDialog @update:open="onQRDialogOpenChange">
             <UiDialogTrigger as-child>
                 <UiButton class="w-full">

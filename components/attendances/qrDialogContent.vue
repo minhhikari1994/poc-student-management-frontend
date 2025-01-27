@@ -132,9 +132,7 @@ const onDetect = async (data) => {
   }
   const result = await updateAttendance(foundAttendanceEntry)
   if (result) {
-    setTimeout(() => {
-      setQRScannerStatusSuccess("Điểm danh thành công", `${getStudentFullName(foundAttendanceEntry.student)} / ${foundAttendanceEntry.student.student_code}`)
-    }, 300)
+    setQRScannerStatusSuccess("Điểm danh thành công", `${getStudentFullName(foundAttendanceEntry.student)} / ${foundAttendanceEntry.student.student_code}`)
   } else {
     setTimeout(() => {
       setQRScannerStatusError('Có lỗi xảy ra khi điểm danh', 'Vui lòng thử lại')
