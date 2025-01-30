@@ -1,7 +1,7 @@
-const baseApiUrl = 'http://poc.minhhikari-local.com:5000'
-
 export const login = (email, password) => {
-    return $fetch(`${baseApiUrl}/api/login`, {
+    const config = useRuntimeConfig()
+    console.log('this is the config', config)
+    return $fetch(`${config.public.baseApiUrl}/api/login`, {
        method: 'POST',
        body: { login_id: email, password },
        credentials: 'include'
@@ -9,14 +9,16 @@ export const login = (email, password) => {
 }
 
 export const logout = () => {
-    return $fetch(`${baseApiUrl}/api/logout`, {
+    const config = useRuntimeConfig()
+    return $fetch(`${config.public.baseApiUrl}/api/logout`, {
        method: 'POST',
        credentials: 'include'
     });
 }
 
 export const checkAuth = () => {
-    return $fetch(`${baseApiUrl}/api/auth_check`, {
+    const config = useRuntimeConfig()
+    return $fetch(`${config.public.baseApiUrl}/api/auth_check`, {
        method: 'GET',
        credentials: 'include'
     });

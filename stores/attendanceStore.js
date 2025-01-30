@@ -26,9 +26,15 @@ export const useAttendanceStore = defineStore('attendance', () => {
     }
   }
 
+  const exportUnitAttendanceToExcel = async (unit_code) => {
+    const config = useRuntimeConfig()
+    window.location.assign(`${config.public.baseApiUrl}/api/attendances/${unit_code}/report`)
+  }
+
   return {
     unitAttendanceData,
     getUnitAttendanceData,
-    updateAttendanceData
+    updateAttendanceData,
+    exportUnitAttendanceToExcel
   }
 })
