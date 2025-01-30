@@ -1,6 +1,5 @@
 export const login = (email, password) => {
     const config = useRuntimeConfig()
-    console.log('this is the config', config)
     return $fetch(`${config.public.baseApiUrl}/api/login`, {
        method: 'POST',
        body: { login_id: email, password },

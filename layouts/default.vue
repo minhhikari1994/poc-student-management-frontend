@@ -1,5 +1,5 @@
 <template>
-  <UiSidebarProvider v-slot="{ isMobile, state }">
+  <UiSidebarProvider v-slot="{ isMobile, setOpenMobile, setOpen }">
     <!-- App Sidebar -->
     <UiSidebar variant="inset">
       <!-- Team switcher -->
@@ -99,7 +99,7 @@
           <!-- <UiSidebarGroupLabel label="Lớp" /> -->
           <UiSidebarMenu>
               <UiSidebarMenuItem v-for="(item, index) in data.navMain" :key="index">
-                <NuxtLink :href="item.url">
+                <NuxtLink @click.prevent="handleNavigate(item.url, isMobile, setOpenMobile)">
                   <UiSidebarMenuButton :tooltip="item.title">
                       <Icon mode="svg" :name="item.icon" />
                       <span>{{ item.title }}</span>        
@@ -409,6 +409,13 @@ const handleLogout = async () => {
   const result = await authStore.logoutUser();
   if (result) {
     navigateTo("/auth/login");
+  }
+}
+
+const handleNavigate = async (url, isMobile, setOpenMobile) => {
+  await navigateTo(url);
+  if (isMobile) {
+    setOpenMobile(false);
   }
 }
 </script>
