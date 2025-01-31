@@ -286,6 +286,12 @@ const data = {
       url: "/attendances",
       icon: "lucide:check",
       isActive: false
+    },
+    {
+      title: "Điểm kiểm tra",
+      url: "/testscores",
+      icon: "lucide:file-check",
+      isActive: false
     }
     // {
     //   title: "Playground",
