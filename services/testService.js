@@ -17,3 +17,12 @@ export const getUnitTestScores = (test_id, unit_id) => {
         },
     });
 }
+
+export const createOrUpdateStudentTestScores = (updateTestScoreBody) => {
+    const config = useRuntimeConfig()
+    return $fetch(`${config.public.baseApiUrl}/api/test-scores`, {
+        method: 'POST',
+        credentials: 'include',
+        body: updateTestScoreBody
+    });
+}

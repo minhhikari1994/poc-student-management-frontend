@@ -2,7 +2,7 @@ import { ref } from "vue";
 import { defineStore } from 'pinia'
 import { push } from "notivue";
 
-import { getAllTestForUnit, getUnitTestScores } from '@/services/testService'
+import { getAllTestForUnit, getUnitTestScores, createOrUpdateStudentTestScores } from '@/services/testService'
 
 export const useTestStore = defineStore('test', () => {
     const unitTests = ref([])
@@ -26,10 +26,26 @@ export const useTestStore = defineStore('test', () => {
         }
     }
 
+    const updateTestScores = async (test_id, student_scores) => {
+        try {
+            const requestBody = {
+                test_id: test_id,
+                student_scores: student_scores
+            }
+            const result = await createOrUpdateStudentTestScores(requestBody)
+            if (result) {
+                push.success(result.message);
+            }
+        } catch (error) {
+            push.error(error.data.message);
+        }
+    }
+
     return {
         unitTests,
         getUnitTests,
         unitTestScores,
-        getUnitTestScoreList
+        getUnitTestScoreList,
+        updateTestScores
     }
 })
