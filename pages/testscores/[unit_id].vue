@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center justify-center">
-        <UiSelect v-model="selectedTest" @update:model-value="onTestChange">
+        <UiSelect v-model="selectedTest" @update:model-value="onTestChange" :disabled="isSavingScore">
             <UiSelectTrigger placeholder="Chọn bài kiểm tra để nhập điểm" />
             <UiSelectContent>
                 <UiSelectItem v-for="option in unitTests" :key="option.id" :value="option.id" :text="option.name" />
@@ -26,7 +26,7 @@
                     <UiTableRow>
                         <UiTableCell class="text-wrap">{{ getStudentFullName(scoreEntry.student) }}</UiTableCell>
                         <UiTableCell>
-                            <UiSelect v-model="scoreEntry.score">
+                            <UiSelect v-model="scoreEntry.score" :disabled="isSavingScore">
                                 <UiSelectTrigger placeholder="Chọn điểm số" />
                                 <UiSelectContent class="h-[50vh]">
                                     <UiSelectItem v-for="option in scoreOptions" :key="option.toString()"
