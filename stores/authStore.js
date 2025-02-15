@@ -6,11 +6,13 @@ import { login, logout, checkAuth } from '@/services/authService';
 
 export const useAuthStore = defineStore("auth", () => {
     const isAuthenticated = ref(false);
+    const currentUser = ref({});
 
     const checkUserAuth = async () => {
         try {
-            await checkAuth()
+            var result = await checkAuth()
             isAuthenticated.value = true;
+            currentUser.value = result.data
             return true
         } catch (error) {
             // push.error(error.data.message);
@@ -21,8 +23,9 @@ export const useAuthStore = defineStore("auth", () => {
 
     const loginUser = async ({ email, password }) => {
         try {
-            await login(email, password)
+            var result = await login(email, password)
             isAuthenticated.value = true;
+            currentUser.value = result.data
             return true
         } catch (error) {
             push.error(error.data.message);
@@ -35,6 +38,7 @@ export const useAuthStore = defineStore("auth", () => {
         try {
             await logout()
             isAuthenticated.value = false;
+            currentUser.value = {};
             return true
         } catch (error) {
             push.error(error.data.message);
@@ -45,6 +49,7 @@ export const useAuthStore = defineStore("auth", () => {
 
     return {
         isAuthenticated,
+        currentUser,
         loginUser,
         logoutUser,
         checkUserAuth

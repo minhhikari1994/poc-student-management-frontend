@@ -179,19 +179,18 @@
                 <UiSidebarMenuButton size="lg"
                   class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                   <UiAvatar class="size-8 rounded-lg">
-                    <UiAvatarImage :src="data.user.avatar" :alt="data.user.name" />
-                    <UiAvatarFallback class="rounded-lg">BB</UiAvatarFallback>
+                    <UiAvatarFallback class="rounded-lg">{{ (currentUser.name || '').substring(0, 2).toUpperCase() }}</UiAvatarFallback>
                   </UiAvatar>
                   <div class="grid flex-1 text-left text-sm leading-tight">
-                    <span class="truncate font-semibold">{{ data.user.name }}</span>
-                    <span class="truncate text-xs">{{ data.user.email }}</span>
+                    <span class="truncate font-semibold">{{ currentUser.name}}</span>
+                    <span class="truncate text-xs">{{ currentUser.email }}</span>
                   </div>
                   <Icon name="lucide:chevrons-up-down" class="ml-auto size-4" />
                 </UiSidebarMenuButton>
               </UiDropdownMenuTrigger>
               <UiDropdownMenuContent class="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
                 :side="isMobile ? 'bottom' : 'right'" :side-offset="4" align="end">
-                <UiDropdownMenuLabel class="p-0 font-normal">
+                <!-- <UiDropdownMenuLabel class="p-0 font-normal">
                   <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                     <UiAvatar class="size-8 rounded-lg">
                       <UiAvatarImage :src="data.user.avatar" :alt="data.user.name" />
@@ -214,7 +213,7 @@
                   <UiDropdownMenuItem icon="lucide:settings-2" title="Settings" />
                   <UiDropdownMenuItem icon="lucide:bell" title="Notifications" />
                 </UiDropdownMenuGroup>
-                <UiDropdownMenuSeparator />
+                <UiDropdownMenuSeparator /> -->
                 <UiDropdownMenuItem icon="lucide:log-out" title="Log out" @click.prevent="handleLogout" />
               </UiDropdownMenuContent>
             </UiDropdownMenu>
@@ -245,6 +244,7 @@ const appPageStore = useAppPageStore();
 const authStore = useAuthStore();
 
 const { breadcrumbItems } = storeToRefs(appPageStore);
+const { currentUser } = storeToRefs(authStore);
 // // Breadcrumb items
 // const breadcrumbItems = [
 //   { label: "Building Your Application", link: "#" },
