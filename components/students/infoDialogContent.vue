@@ -42,7 +42,7 @@
                         <UiTabs default-value="studentInfo">
                             <UiTabsList :pill="false" class="relative grid w-full grid-cols-3">
                                 <UiTabsTrigger :pill="false" value="studentInfo">Thông tin</UiTabsTrigger>
-                                <UiTabsTrigger :pill="false" value="testScores">Điểm số</UiTabsTrigger>
+                                <UiTabsTrigger :pill="false" value="testScores">Điểm</UiTabsTrigger>
                                 <UiTabsTrigger :pill="false" value="attendanceData">Điểm danh</UiTabsTrigger>
                                 <UiTabsIndicator />
                             </UiTabsList>
@@ -124,15 +124,21 @@
                                                 <UiTableCell class="text-wrap">{{ format(new
                                                     Date(attendaceEntry.attendance_date), 'dd/MM/yyyy') }}</UiTableCell>
                                                 <UiTableCell>
-                                                    <template v-if="attendaceEntry.mass_status === 'present'">
+                                                    <template v-if="!attendaceEntry.mass_status">
+                                                        <UiBadge variant="secondary">Chưa điểm danh</UiBadge>
+                                                    </template>
+                                                    <template v-else-if="attendaceEntry.mass_status === 'present'">
                                                         <UiBadge class="bg-green-700">Hiện diện</UiBadge>
                                                     </template>
-                                                    <template v-else>
+                                                    <template v-else="!attendaceEntry.mass_status">
                                                         <UiBadge variant="destructive">Vắng</UiBadge>
                                                     </template>
                                                 </UiTableCell>
                                                 <UiTableCell>
-                                                    <template v-if="attendaceEntry.lesson_status === 'present'">
+                                                    <template v-if="!attendaceEntry.mass_status">
+                                                        <UiBadge variant="secondary">Chưa điểm danh</UiBadge>
+                                                    </template>
+                                                    <template v-else-if="attendaceEntry.lesson_status === 'present'">
                                                         <UiBadge class="bg-green-700">Hiện diện</UiBadge>
                                                     </template>
                                                     <template v-else>
