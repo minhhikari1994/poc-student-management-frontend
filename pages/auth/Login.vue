@@ -54,7 +54,7 @@ const handleLogin = handleSubmit(async (loginData) => {
     console.log(loginData)
     const result = await authStore.loginUser(loginData)
     if (result) {
-        navigateTo("/");
+        navigateTo("/units");
     }
 });
 

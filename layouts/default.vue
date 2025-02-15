@@ -202,12 +202,14 @@
                     </div>
                   </div>
                 </UiDropdownMenuLabel>
-                <UiDropdownMenuSeparator />
+                <UiDropdownMenuSeparator /> -->
                 <UiDropdownMenuGroup>
-                  <UiDropdownMenuItem icon="lucide:sparkles" title="Upgrade to Pro" />
+                  <NuxtLink :to="`/profile/change-password`">
+                    <UiDropdownMenuItem icon="lucide:lock" title="Đổi mật khẩu" to="/profile/change-password" />
+                </NuxtLink>
                 </UiDropdownMenuGroup>
                 <UiDropdownMenuSeparator />
-                <UiDropdownMenuGroup>
+                <!-- <UiDropdownMenuGroup>
                   <UiDropdownMenuItem icon="lucide:badge-check" title="Account" />
                   <UiDropdownMenuItem icon="lucide:credit-card" title="Billing" />
                   <UiDropdownMenuItem icon="lucide:settings-2" title="Settings" />
