@@ -54,5 +54,6 @@
     "@vite-pwa/nuxt": "^0.10.6",
     "@vueuse/core": "^12.5.0",
     "tailwindcss-animate": "^1.0.7"
-  }
+  },
+  "version": "PoC 2025.01"
 }

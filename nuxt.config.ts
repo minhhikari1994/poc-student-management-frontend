@@ -74,8 +74,8 @@ export default defineNuxtConfig({
     },
     manifest: {
       name: "PoC Quản lý Giáo lý",
-      short_name: "PoC QLGL",
-      description: "PoC Quản lý Giáo lý",
+      short_name: "QLGL PoC",
+      description: "Ứng dụng quản lý học sinh Giáo Lý - Thiếu nhi Tam Hà - PoC",
       theme_color: "#ffffff",
       background_color: "#ffffff",
       "icons": [

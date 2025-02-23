@@ -38,17 +38,17 @@
                     <UiDropdownMenuShortcut>⌘{{ index + 1 }}</UiDropdownMenuShortcut>
                   </UiDropdownMenuItem>
                 </template>
-                <UiDropdownMenuSeparator />
-                <UiDropdownMenuItem class="gap-2 p-2">
-                  <div class="flex size-6 items-center justify-center rounded-md border bg-background">
-                    <Icon name="lucide:plus" class="size-4" />
-                  </div>
-                  <div class="font-medium text-muted-foreground">Add team</div>
-                </UiDropdownMenuItem>
-              </UiDropdownMenuContent>
-            </UiDropdownMenu>
-          </UiSidebarMenuItem>
-        </UiSidebarMenu> -->
+<UiDropdownMenuSeparator />
+<UiDropdownMenuItem class="gap-2 p-2">
+  <div class="flex size-6 items-center justify-center rounded-md border bg-background">
+    <Icon name="lucide:plus" class="size-4" />
+  </div>
+  <div class="font-medium text-muted-foreground">Add team</div>
+</UiDropdownMenuItem>
+</UiDropdownMenuContent>
+</UiDropdownMenu>
+</UiSidebarMenuItem>
+</UiSidebarMenu> -->
 
         <!-- Search form -->
         <!-- <form v-if="state != 'collapsed'">
@@ -98,14 +98,14 @@
         <UiSidebarGroup>
           <!-- <UiSidebarGroupLabel label="Lớp" /> -->
           <UiSidebarMenu>
-              <UiSidebarMenuItem v-for="(item, index) in data.navMain" :key="index">
-                <NuxtLink @click.prevent="handleNavigate(item.url, isMobile, setOpenMobile)">
-                  <UiSidebarMenuButton :tooltip="item.title">
-                      <Icon mode="svg" :name="item.icon" />
-                      <span>{{ item.title }}</span>        
-                  </UiSidebarMenuButton>
-                </NuxtLink>
-              </UiSidebarMenuItem>
+            <UiSidebarMenuItem v-for="(item, index) in data.navMain" :key="index">
+              <NuxtLink @click.prevent="handleNavigate(item.url, isMobile, setOpenMobile)">
+                <UiSidebarMenuButton :tooltip="item.title">
+                  <Icon mode="svg" :name="item.icon" />
+                  <span>{{ item.title }}</span>
+                </UiSidebarMenuButton>
+              </NuxtLink>
+            </UiSidebarMenuItem>
           </UiSidebarMenu>
         </UiSidebarGroup>
         <!-- Projects -->
@@ -179,10 +179,11 @@
                 <UiSidebarMenuButton size="lg"
                   class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                   <UiAvatar class="size-8 rounded-lg">
-                    <UiAvatarFallback class="rounded-lg">{{ (currentUser.name || '').substring(0, 2).toUpperCase() }}</UiAvatarFallback>
+                    <UiAvatarFallback class="rounded-lg">{{ (currentUser.name || '').substring(0, 2).toUpperCase() }}
+                    </UiAvatarFallback>
                   </UiAvatar>
                   <div class="grid flex-1 text-left text-sm leading-tight">
-                    <span class="truncate font-semibold">{{ currentUser.name}}</span>
+                    <span class="truncate font-semibold">{{ currentUser.name }}</span>
                     <span class="truncate text-xs">{{ currentUser.email }}</span>
                   </div>
                   <Icon name="lucide:chevrons-up-down" class="ml-auto size-4" />
@@ -204,9 +205,16 @@
                 </UiDropdownMenuLabel>
                 <UiDropdownMenuSeparator /> -->
                 <UiDropdownMenuGroup>
-                  <NuxtLink :to="`/profile/change-password`">
-                    <UiDropdownMenuItem icon="lucide:lock" title="Đổi mật khẩu" to="/profile/change-password" />
-                </NuxtLink>
+                  <NuxtLink :to="`#`"
+                    @click.prevent="handleNavigate('/about', isMobile, setOpenMobile)"
+                    cursor="pointer">
+                    <UiDropdownMenuItem icon="lucide:info" title="Thông tin" />
+                  </NuxtLink>
+                  <NuxtLink :to="`#`"
+                    @click.prevent="handleNavigate('/profile/change-password', isMobile, setOpenMobile)"
+                    cursor="pointer">
+                    <UiDropdownMenuItem icon="lucide:lock" title="Đổi mật khẩu" />
+                  </NuxtLink>
                 </UiDropdownMenuGroup>
                 <UiDropdownMenuSeparator />
                 <!-- <UiDropdownMenuGroup>
