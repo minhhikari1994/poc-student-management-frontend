@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     "@morev/vue-transitions/nuxt",
     "@pinia/nuxt",
     "notivue/nuxt",
+    "@vite-pwa/nuxt"
   ],
   css: [
     'notivue/notification.css', // Only needed if using built-in <Notification />
@@ -33,7 +34,7 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: "",
-    preference:"light"
+    preference: "light"
   },
 
   imports: {
@@ -65,5 +66,41 @@ export default defineNuxtConfig({
   build: {
     transpile: ["vue-sonner"]
   },
-  ssr: false
+  ssr: false,
+  pwa: {
+    registerType: "autoUpdate",
+    devOptions: {
+      enabled: true
+    },
+    manifest: {
+      name: "PoC Quản lý Giáo lý",
+      short_name: "PoC QLGL",
+      description: "PoC Quản lý Giáo lý",
+      theme_color: "#ffffff",
+      background_color: "#ffffff",
+      "icons": [
+        {
+          "src": "pwa-64x64.png",
+          "sizes": "64x64",
+          "type": "image/png"
+        },
+        {
+          "src": "pwa-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        },
+        {
+          "src": "pwa-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "src": "maskable-icon-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png",
+          "purpose": "maskable"
+        }
+      ]
+    }
+  }
 })
