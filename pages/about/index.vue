@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center justify-center text-center">
-        <UiCard class="w-[500px] max-w-sm" title="Thông tin ứng dụng Quản lý giáo lý"
+        <UiCard class="w-[90%] max-w-sm" title="Thông tin ứng dụng Quản lý giáo lý"
             description="Thiếu nhi giáo xứ Tam Hà">
             <template #content>
                 <UiCardContent>
