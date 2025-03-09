@@ -130,12 +130,12 @@
                                                     <template v-else-if="attendaceEntry.mass_status === 'present'">
                                                         <UiBadge class="bg-green-700">Hiện diện</UiBadge>
                                                     </template>
-                                                    <template v-else="!attendaceEntry.mass_status">
+                                                    <template v-else>
                                                         <UiBadge variant="destructive">Vắng</UiBadge>
                                                     </template>
                                                 </UiTableCell>
                                                 <UiTableCell>
-                                                    <template v-if="!attendaceEntry.mass_status">
+                                                    <template v-if="!attendaceEntry.lesson_status">
                                                         <UiBadge variant="secondary">Chưa điểm danh</UiBadge>
                                                     </template>
                                                     <template v-else-if="attendaceEntry.lesson_status === 'present'">
