@@ -20,9 +20,7 @@ jobs:
         username: ${{ secrets.DOCKER_REGISTRY_USER }}
         password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
     - name: Build the Docker image
-      run: docker build -t minhhikari/giaolypoc-fe:latest .
-      env:
-        NUXT_PUBLIC_API_BASE_URL: ${{ vars.API_BASE_URL }}
+      run: docker build --build-arg NUXT_PUBLIC_API_BASE_URL="${{ vars.API_BASE_URL }}" -t minhhikari/giaolypoc-fe:latest .
     - name: Push the "latest" image
       run: docker push "minhhikari/giaolypoc-fe:latest"
 
