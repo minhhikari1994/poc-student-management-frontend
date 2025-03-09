@@ -22,7 +22,7 @@ jobs:
     - name: Build the Docker image
       env:
         API_BASE_URL: ${{ vars.API_BASE_URL }}
-      run: docker build --build-arg NUXT_PUBLIC_API_BASE_URL=$API_BASE_URL -t minhhikari/giaolypoc-fe:latest .
+      run: docker build -t minhhikari/giaolypoc-fe:latest .
     - name: Push the "latest" image
       run: docker push "minhhikari/giaolypoc-fe:latest"
 

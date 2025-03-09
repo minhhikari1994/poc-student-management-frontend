@@ -1,6 +1,6 @@
 # builder
 FROM node:22.13.1-alpine AS builder
-ENV NUXT_PUBLIC_API_BASE_URL=$NUXT_PUBLIC_API_BASE_URL
+ENV NUXT_PUBLIC_API_BASE_URL="https://localhost:50000"
 WORKDIR /app
 ADD . /app/
 RUN npm i -g pnpm
