@@ -100,7 +100,10 @@ export default defineNuxtConfig({
           "type": "image/png",
           "purpose": "maskable"
         }
-      ]
+      ],
+    },
+    client: {
+      installPrompt: true
     }
   }
 })
