@@ -6,8 +6,8 @@
           <UiDialogTrigger as-child>
             <UiListItem class="py-5 items-start px-2">
               <UiListContent>
-                <UiListTitle
-                  :title="`${student.saint_name} ${student.last_name} ${student.middle_name} ${student.first_name}`" />
+                <UiListTitle class="text-left"
+                  :title="getStudentFullName(student)" />
                 <UiListSubtitle class="line-clamp-2 text-left" :subtitle="student.student_code" />
               </UiListContent>
               <UiButton size="icon-sm" variant="ghost" class="ml-auto shrink-0 self-center rounded-full">
@@ -51,5 +51,13 @@ onBeforeMount(async () => {
   await unitStore.getUnitStudents(unit_code);
   setBreadcrumbItems();
 });
+
+const getStudentFullName = (student) => {
+  const nameSegments = [
+    student.saint_name, student.last_name, student.middle_name, student.first_name
+  ]
+  const fullNameWithoutEmptySegment = nameSegments.filter(segment => segment !== "");
+  return fullNameWithoutEmptySegment.join(" ");
+}
 
 </script>
