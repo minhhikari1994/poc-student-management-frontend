@@ -56,7 +56,7 @@ const getStudentFullName = (student) => {
   const nameSegments = [
     student.saint_name, student.last_name, student.middle_name, student.first_name
   ]
-  const fullNameWithoutEmptySegment = nameSegments.filter(segment => segment !== "");
+  const fullNameWithoutEmptySegment = nameSegments.filter(segment => !(!segment));
   return fullNameWithoutEmptySegment.join(" ");
 }
 
