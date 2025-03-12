@@ -1,7 +1,7 @@
 <template>
     <UiDialogHeader class="contents space-y-0 text-left">
         <UiDialogTitle class="border-b border-border px-6 py-4 text-base"
-            :title="`${student.saint_name} ${student.last_name} ${student.middle_name} ${student.first_name}`" />
+            :title="getStudentFullName(student)" />
         <div class="overflow-y-auto h-[70vh] max-h-[70vh]" >
             <UiDialogDescription>
                 <template v-if="isLoading">
@@ -182,4 +182,12 @@ onBeforeMount(async () => {
     await studentStore.getStudentSummaryInfo(student.student_code, gradeCode)
     isLoading.value = false
 })
+
+const getStudentFullName = (student) => {
+  const nameSegments = [
+    student.saint_name, student.last_name, student.middle_name, student.first_name
+  ]
+  const fullNameWithoutEmptySegment = nameSegments.filter(segment => !(!segment));
+  return fullNameWithoutEmptySegment.join(" ");
+}
 </script>
