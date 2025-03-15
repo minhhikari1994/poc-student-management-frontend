@@ -39,16 +39,16 @@
                                         v-if="selectedAttendanceType === 'mass'"
                                         @update:model-value="updateMassAttendance(attendance)">
                                         <div class="flex items-center space-x-2">
-                                            <UiRadioGroupItem id="r1" value="present" />
-                                            <UiLabel for="r1">Hiện diện</UiLabel>
+                                            <UiRadioGroupItem :id="`r-mass-present-${attendance.student.student_code}`" value="present" />
+                                            <UiLabel :for="`r-mass-present-${attendance.student.student_code}`">Hiện diện</UiLabel>
                                         </div>
                                         <div class="flex items-center space-x-2">
-                                            <UiRadioGroupItem id="r2" value="notified_absent" />
-                                            <UiLabel for="r2">Vắng có phép</UiLabel>
+                                            <UiRadioGroupItem :id="`r-mass-notified-absent-${attendance.student.student_code}`" value="notified_absent" />
+                                            <UiLabel :for="`r-mass-notified-absent-${attendance.student.student_code}`">Vắng có phép</UiLabel>
                                         </div>
                                         <div class="flex items-center space-x-2">
-                                            <UiRadioGroupItem id="r3" value="absent" />
-                                            <UiLabel for="r3">Vắng không phép</UiLabel>
+                                            <UiRadioGroupItem :id="`r-mass-absent-${attendance.student.student_code}`" value="absent" />
+                                            <UiLabel :for="`r-mass-absent-${attendance.student.student_code}`">Vắng không phép</UiLabel>
                                         </div>
                                     </UiRadioGroup>
                                     <UiRadioGroup :disabled="isAttendanceUpdating"
@@ -56,16 +56,16 @@
                                         v-if="selectedAttendanceType === 'lesson'"
                                         @update:model-value="updateLessonAttendance(attendance)">
                                         <div class="flex items-center space-x-2">
-                                            <UiRadioGroupItem id="r1" value="present" />
-                                            <UiLabel for="r1">Hiện diện</UiLabel>
+                                            <UiRadioGroupItem :id="`r-lesson-present-${attendance.student.student_code}`" value="present"/>
+                                            <UiLabel :for="`r-lesson-present-${attendance.student.student_code}`">Hiện diện</UiLabel>
                                         </div>
                                         <div class="flex items-center space-x-2">
-                                            <UiRadioGroupItem id="r2" value="notified_absent" />
-                                            <UiLabel for="r2">Vắng có phép</UiLabel>
+                                            <UiRadioGroupItem :id="`r-lesson-notified-absent-${attendance.student.student_code}`" value="notified_absent" />
+                                            <UiLabel :for="`r-lesson-notified-absent-${attendance.student.student_code}`">Vắng có phép</UiLabel>
                                         </div>
                                         <div class="flex items-center space-x-2">
-                                            <UiRadioGroupItem id="r3" value="absent" />
-                                            <UiLabel for="r3">Vắng không phép</UiLabel>
+                                            <UiRadioGroupItem :id="`r-lesson-absent-${attendance.student.student_code}`" value="absent" />
+                                            <UiLabel :for="`r-lesson-absent-${attendance.student.student_code}`">Vắng không phép</UiLabel>
                                         </div>
                                     </UiRadioGroup>
                                 </div>
