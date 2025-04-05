@@ -124,7 +124,9 @@ onMounted(() => {
 
 const onDetect = async (data) => {
   setQRScannerStatusWaiting()
-  const foundAttendanceEntry = unitAttendanceData.find(attendanceData => attendanceData.student.student_code === data[0].rawValue)
+  const qrContent = data[0].rawValue
+  const student_code_from_qr = qrContent.split("|")[1]
+  const foundAttendanceEntry = unitAttendanceData.find(attendanceData => attendanceData.student.student_code === student_code_from_qr)
   if (!foundAttendanceEntry) {
     setTimeout(() => {
       setQRScannerStatusError('Không tìm thấy học viên')
