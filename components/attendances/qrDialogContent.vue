@@ -20,7 +20,7 @@
       </div>
       <div class="mt-4">
         <div class="h-[40vh] w-full rounded-lg border border-border">
-          <QrcodeStream @detect="onDetect"
+          <QrcodeStream @detect="onDetect" :track="paintDetectionOutline" :formats="selectedBarcodeFormats"
             :paused="qrScannerStatus.state === SCANNER_STATE_WAITING" class="p-4" />
         </div>
       </div>
@@ -28,10 +28,6 @@
         <UiAlert :title="qrScannerStatus.title" :description="qrScannerStatus.description"
           :variant="getQRScannerStatusVariant()" :icon="getQRScannerStatusIcon()"
           :icon-class="qrScannerStatus.state === SCANNER_STATE_WAITING ? 'animate-spin' : ''" />
-      </div>
-      <div class="mt-1 text-center">
-        <UiAlert :title="qrContentForTesting"
-          variant="info" icon="lucide:info" />
       </div>
     </div>
 
@@ -48,8 +44,6 @@ const SCANNER_STATE_INFO = 'info'
 const SCANNER_STATE_SUCCESS = 'success'
 const SCANNER_STATE_WAITING = 'waiting'
 
-const qrContentForTesting = ref('')
-
 const props = defineProps(['attendanceDate', 'attendanceType', 'unitAttendanceData', 'unitDetails'])
 const { attendanceDate, attendanceType, unitAttendanceData, unitDetails } = props
 
@@ -60,6 +54,30 @@ const qrScannerStatus = ref({
   title: '',
   description: ''
 })
+
+const barcodeFormats = {
+  aztec: false,
+  code_128: false,
+  code_39: false,
+  code_93: false,
+  codabar: false,
+  databar: false,
+  databar_expanded: false,
+  data_matrix: false,
+  dx_film_edge: false,
+  ean_13: false,
+  ean_8: false,
+  itf: false,
+  maxi_code: false,
+  micro_qr_code: true,
+  pdf417: false,
+  qr_code: true,
+  rm_qr_code: true,
+  upc_a: false,
+  upc_e: false,
+  linear_codes: false,
+  matrix_codes: false
+}
 
 const getQRScannerStatusVariant = () => {
   switch (qrScannerStatus.value.state) {
@@ -90,6 +108,10 @@ const getQRScannerStatusIcon = () => {
       return 'lucide:info'
   }
 }
+
+const selectedBarcodeFormats = computed(() => {
+  return Object.keys(barcodeFormats.value).filter((format) => barcodeFormats.value[format])
+})
 
 const setQRScannerStatusMessage = (title, description) => {
   qrScannerStatus.value.title = title
@@ -131,7 +153,6 @@ onMounted(() => {
 const onDetect = async (data) => {
   setQRScannerStatusWaiting()
   const qrContent = data[0].rawValue
-  qrContentForTesting.value = qrContent
   const student_code_from_qr = qrContent.split("|")[1]
   const foundAttendanceEntry = unitAttendanceData.find(attendanceData => attendanceData.student.student_code === student_code_from_qr)
   if (!foundAttendanceEntry) {
