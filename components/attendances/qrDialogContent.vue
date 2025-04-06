@@ -110,7 +110,7 @@ const getQRScannerStatusIcon = () => {
 }
 
 const selectedBarcodeFormats = computed(() => {
-  return Object.keys(barcodeFormats.value).filter((format) => barcodeFormats.value[format])
+  return Object.keys(barcodeFormats).filter((format) => barcodeFormats[format])
 })
 
 const setQRScannerStatusMessage = (title, description) => {
