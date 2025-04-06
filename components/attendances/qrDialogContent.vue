@@ -20,7 +20,7 @@
       </div>
       <div class="mt-4">
         <div class="h-[40vh] w-full rounded-lg border border-border">
-          <QrcodeStream @detect="onDetect" :track="paintDetectionOutline"
+          <QrcodeStream @detect="onDetect"
             :paused="qrScannerStatus.state === SCANNER_STATE_WAITING" class="p-4" />
         </div>
       </div>
