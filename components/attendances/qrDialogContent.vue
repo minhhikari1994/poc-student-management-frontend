@@ -29,6 +29,10 @@
           :variant="getQRScannerStatusVariant()" :icon="getQRScannerStatusIcon()"
           :icon-class="qrScannerStatus.state === SCANNER_STATE_WAITING ? 'animate-spin' : ''" />
       </div>
+      <div class="mt-1 text-center">
+        <UiAlert :title="qrContentForTesting"
+          variant="info" icon="lucide:info" />
+      </div>
     </div>
 
   </UiDialogDescription>
@@ -43,6 +47,8 @@ const SCANNER_STATE_ERROR = 'error'
 const SCANNER_STATE_INFO = 'info'
 const SCANNER_STATE_SUCCESS = 'success'
 const SCANNER_STATE_WAITING = 'waiting'
+
+const qrContentForTesting = ref('')
 
 const props = defineProps(['attendanceDate', 'attendanceType', 'unitAttendanceData', 'unitDetails'])
 const { attendanceDate, attendanceType, unitAttendanceData, unitDetails } = props
@@ -125,6 +131,7 @@ onMounted(() => {
 const onDetect = async (data) => {
   setQRScannerStatusWaiting()
   const qrContent = data[0].rawValue
+  qrContentForTesting.value = qrContent
   const student_code_from_qr = qrContent.split("|")[1]
   const foundAttendanceEntry = unitAttendanceData.find(attendanceData => attendanceData.student.student_code === student_code_from_qr)
   if (!foundAttendanceEntry) {
