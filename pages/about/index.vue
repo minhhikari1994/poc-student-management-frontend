@@ -1,13 +1,13 @@
 <template>
     <div class="flex items-center justify-center text-center">
-        <UiTabs class="w-[400px]" default-value="appinfo">
+        <UiTabs class="w-[90%] w-max-[10rem]" default-value="appinfo">
             <UiTabsList :pill="false" class="relative grid w-full grid-cols-2">
                 <UiTabsTrigger :pill="false" value="appinfo">Về ứng dụng</UiTabsTrigger>
                 <UiTabsTrigger :pill="false" value="changelog">Thông tin phiên bản</UiTabsTrigger>
                 <UiTabsIndicator />
             </UiTabsList>
-            <UiTabsContent value="appinfo">
-                <UiCard class="w-full max-w-sm" title="Thông tin ứng dụng Quản lý giáo lý"
+            <UiTabsContent value="appinfo" class="mt-3">
+                <UiCard class="w-[100%] max-w-sm m-auto" title="Thông tin ứng dụng Quản lý giáo lý"
                     description="Thiếu nhi giáo xứ Tam Hà">
                     <template #content>
                         <UiCardContent>
@@ -48,8 +48,8 @@
                     </template>
                 </UiCard>
             </UiTabsContent>
-            <UiTabsContent value="changelog">
-                <UiCard class="w-full max-w-sm">
+            <UiTabsContent value="changelog" class="mt-3">
+                <UiCard class="w-[100%] max-w-sm m-auto">
                     <template #content>
                         <UiCardContent class="text-left text-muted-foreground text-sm">
                             <div class="mb-3">
@@ -79,7 +79,7 @@
                     </template>
                 </UiCard>
             </UiTabsContent>
-            <div class="mt-[2rem] w-[400px]">
+            <div class="mt-[2rem] w-[90%]">
                 <p class="text-muted-foreground text-xs">
                     Minh Hikari - Quarter to Eleven<br />
                     &copy; 2025
